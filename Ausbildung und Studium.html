@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ausbildung und Studium</title>
+<style>
+:root{--bg:#f3efe6;--ink:#1d2a3a;--mut:#4d5b6b;--a:#d99a00;--b:#2f5d8a;--c:#1f7a6b;--card:#fffdf8;--line:#d9d2c2;--g1:#fff6dc;--g2:#e3eefa;
+--ff:Georgia,"Times New Roman",serif;--fs:"Trebuchet MS","Segoe UI",system-ui,sans-serif;box-sizing:border-box;
+padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a24;--ink:#f1ecde;--mut:#b2bdca;--card:#1c2735;--line:#33435a;--a:#f0b62c;--b:#7fb0e0;--c:#4fc0ab;--g1:#2a2a1f;--g2:#1c2b3d}}
+:root[data-theme="dark"]{--bg:#121a24;--ink:#f1ecde;--mut:#b2bdca;--card:#1c2735;--line:#33435a;--a:#f0b62c;--b:#7fb0e0;--c:#4fc0ab;--g1:#2a2a1f;--g2:#1c2b3d}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--fs);overflow:hidden;position:relative}
+body::before,body::after{content:"";position:fixed;border-radius:50%;filter:blur(70px);opacity:.35;z-index:0;pointer-events:none}
+body::before{width:42vmax;height:42vmax;background:var(--a);top:-18vmax;left:-12vmax}
+body::after{width:40vmax;height:40vmax;background:var(--b);bottom:-18vmax;right:-12vmax}
+.bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:5px;background:linear-gradient(90deg,var(--a),var(--b),var(--c));width:33%;transition:width .5s;z-index:5;border-radius:0 5px 5px 0}
+.deck{position:relative;z-index:1;height:100%;display:flex;transition:transform .6s cubic-bezier(.7,0,.2,1)}
+.s{min-width:100%;height:100%;padding:clamp(24px,4vw,56px) clamp(20px,6vw,80px) 90px;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(16px,4vw,56px);align-items:center;overflow-y:auto}
+.num{font-family:var(--ff);font-size:15px;letter-spacing:.2em;color:var(--mut);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.num::after{content:"";height:2px;width:56px;background:currentColor;opacity:.4}
+.txt h1{font-family:var(--ff);font-size:clamp(40px,7vw,104px);line-height:1;letter-spacing:-.025em;margin-bottom:.35em}
+.txt p{font-size:clamp(17px,2.3vw,32px);line-height:1.55;color:var(--mut);max-width:34em;margin-bottom:.9em}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.chip{padding:9px 18px;border-radius:99px;background:var(--card);border:2px solid currentColor;font-weight:700;font-size:clamp(15px,1.6vw,24px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.art{position:relative;padding:0!important;background:linear-gradient(145deg,var(--g1),var(--g2));border:1px solid var(--line);border-radius:32px;padding:clamp(10px,2vw,22px);display:flex;align-items:center;justify-content:center;min-height:260px;box-shadow:0 24px 50px -20px rgba(29,42,58,.35);overflow:hidden}
+.art svg{width:100%;max-height:72vh;height:auto;position:relative}
+.s1 h1{color:var(--a)}.s2 h1{color:var(--b)}.s3 h1{color:var(--c)}
+.txt>*{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.art{opacity:0;transform:scale(.94);transition:opacity .7s .15s,transform .7s .15s}
+.s.on .txt>*,.s.on .art{opacity:1;transform:none}
+.s.on .txt>*:nth-child(2){transition-delay:.1s}.s.on .txt>*:nth-child(3){transition-delay:.2s}.s.on .txt>*:nth-child(4){transition-delay:.3s}.s.on .txt>*:nth-child(5){transition-delay:.4s}
+.fl{animation:fl 4s ease-in-out infinite}.fl2{animation:fl 5s ease-in-out -2s infinite}
+@keyframes fl{50%{transform:translateY(-9px)}}
+.spin{transform-box:fill-box;transform-origin:center;animation:sp 14s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 18px}
+.cmp div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;font-size:clamp(15px,1.9vw,26px);line-height:1.5;box-shadow:0 10px 24px -14px rgba(0,0,0,.3)}
+.cmp div::before{content:"";display:block;height:5px;width:48px;border-radius:5px;margin-bottom:12px}
+.cmp .l::before{background:var(--a)}.cmp .r::before{background:var(--b)}
+.cmp b{display:block;font-family:var(--ff);font-size:1.3em;margin-bottom:6px}
+.cmp .l b{color:var(--a)}.cmp .r b{color:var(--b)}
+.cmp small{display:block;margin-top:8px;color:var(--mut);font-size:.85em}
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;align-items:center;justify-content:center;gap:18px;padding:14px 14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 45%)}
+.nav button{width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-size:22px;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.15);transition:transform .2s}
+.nav button:hover{transform:scale(1.1)}
+.nav button:focus-visible{outline:3px solid var(--b);outline-offset:3px}
+.dots{display:flex;gap:10px}.dots i{width:12px;height:12px;border-radius:99px;background:var(--line);transition:.3s;cursor:pointer}
+.dots i.on{width:34px;background:var(--ink)}
+@media(max-width:760px){.s{grid-template-columns:1fr;align-content:start;gap:18px;padding-top:28px}.art{order:-1;min-height:0}.art svg{max-height:34vh}.cmp{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.deck,.bar,.txt>*,.art{transition:none}.fl,.fl2,.spin{animation:none}}
+.fs{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:14px;z-index:7;border:2px solid var(--ink);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 16px;font-weight:700;cursor:pointer;font-size:14px}
+.art svg{border-radius:32px;filter:saturate(1.05) contrast(1.03)}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<button class="fs" id="fs">⛶ Vollbild (F)</button>
+<div class="deck" id="deck">
+
+<section class="s s1 on">
+ <div class="txt">
+  <div class="num">01 / 03</div>
+  <h1>Ausbildung</h1>
+  <p>In Deutschland gibt es verschiedene Möglichkeiten, einen Beruf zu lernen. Eine davon ist die Ausbildung. Man arbeitet in einer Firma und besucht eine Berufsschule.</p>
+  <p>Dabei sammelt man praktische Erfahrungen und bekommt jeden Monat Geld.</p>
+  <div class="chips"><span class="chip" style="color:var(--a)">💻 IT-Firma</span><span class="chip" style="color:var(--b)">🏫 Berufsschule</span><span class="chip" style="color:var(--c)">💶 Monatlich Geld</span></div>
+ </div>
+ <div class="art">
+  <svg viewBox="0 0 560 420" preserveAspectRatio="xMidYMid slice" role="img" aria-label="IT-Auszubildender am Arbeitsplatz im Serverraum"><defs>
+<filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".35"/></filter><filter id="bl"><feGaussianBlur stdDeviation="8"/></filter>
+<linearGradient id="sk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d3b0"/><stop offset="1" stop-color="#d9a273"/></linearGradient>
+<linearGradient id="wl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2a3d"/><stop offset="1" stop-color="#0e1724"/></linearGradient>
+<linearGradient id="rk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b3441"/><stop offset=".5" stop-color="#3d4859"/><stop offset="1" stop-color="#232a35"/></linearGradient>
+<linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12384a"/><stop offset="1" stop-color="#0a1c2a"/></linearGradient>
+<linearGradient id="hood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f7a6b"/><stop offset=".5" stop-color="#2aa391"/><stop offset="1" stop-color="#176356"/></linearGradient>
+<linearGradient id="dk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b98a5a"/><stop offset="1" stop-color="#7a5632"/></linearGradient>
+<radialGradient id="coin" cx=".35" cy=".3"><stop offset="0" stop-color="#fff0a0"/><stop offset=".6" stop-color="#e5ac1a"/><stop offset="1" stop-color="#9a6a00"/></radialGradient>
+<radialGradient id="gl"><stop offset="0" stop-color="#3fe0c4" stop-opacity=".45"/><stop offset="1" stop-color="#3fe0c4" stop-opacity="0"/></radialGradient></defs>
+<rect width="560" height="420" fill="url(#wl)"/><rect y="330" width="560" height="90" fill="#0a111b"/>
+<g opacity=".12" stroke="#7fd"><path d="M0 70H560M0 140H560M0 210H560M0 280H560M70 0V330M140 0V330M210 0V330M280 0V330M350 0V330M420 0V330M490 0V330"/></g>
+<g filter="url(#sh)"><rect x="24" y="40" width="96" height="290" rx="6" fill="url(#rk)"/><rect x="140" y="40" width="96" height="290" rx="6" fill="url(#rk)"/>
+<g fill="#161c25"><rect x="32" y="52" width="80" height="26" rx="3"/><rect x="32" y="86" width="80" height="26" rx="3"/><rect x="32" y="120" width="80" height="26" rx="3"/><rect x="32" y="154" width="80" height="26" rx="3"/><rect x="32" y="188" width="80" height="26" rx="3"/><rect x="32" y="222" width="80" height="26" rx="3"/><rect x="32" y="256" width="80" height="26" rx="3"/><rect x="148" y="52" width="80" height="26" rx="3"/><rect x="148" y="86" width="80" height="26" rx="3"/><rect x="148" y="120" width="80" height="26" rx="3"/><rect x="148" y="154" width="80" height="26" rx="3"/><rect x="148" y="188" width="80" height="26" rx="3"/><rect x="148" y="222" width="80" height="26" rx="3"/></g>
+<g fill="#3fe08a"><circle cx="100" cy="65" r="3"/><circle cx="100" cy="99" r="3"/><circle cx="100" cy="167" r="3"/><circle cx="100" cy="201" r="3"/><circle cx="100" cy="269" r="3"/><circle cx="216" cy="65" r="3"/><circle cx="216" cy="133" r="3"/><circle cx="216" cy="167" r="3"/></g><g fill="#ffb02e"><circle cx="90" cy="65" r="3"/><circle cx="90" cy="133" r="3"/><circle cx="206" cy="99" r="3"/><circle cx="206" cy="201" r="3"/></g>
+<g stroke="#4aa8ff" stroke-width="2" opacity=".8"><path d="M44 72H60M44 106H70M44 140H56M44 174H66M160 72H178M160 106H172M160 140H182"/></g></g>
+<path d="M120 90Q130 60 140 90M120 150Q135 120 140 150M120 210Q138 180 140 210" stroke="#ff7a3d" stroke-width="3" fill="none"/>
+<ellipse cx="400" cy="200" rx="190" ry="130" fill="url(#gl)"/>
+<g filter="url(#sh)"><rect x="262" y="100" width="190" height="124" rx="10" fill="#10161d"/><rect x="272" y="110" width="170" height="102" rx="4" fill="url(#scr)"/>
+<g font-family="monospace" font-size="11" font-weight="700"><text x="282" y="130" fill="#7fe3ff">$ ssh server-01</text><text x="282" y="147" fill="#ffe27a">if (netz.ok) {</text><text x="294" y="163" fill="#fff">deploy("Projekt");</text><text x="282" y="179" fill="#ffe27a">}</text><text x="282" y="196" fill="#6fe0a8">✓ Test bestanden</text></g>
+<path d="M272 110H360L330 212H272Z" fill="#fff" opacity=".07"/><rect x="348" y="224" width="14" height="18" fill="#0b1118"/><rect x="318" y="240" width="74" height="9" rx="4" fill="#232c38"/></g>
+<rect x="230" y="300" width="330" height="22" rx="4" fill="url(#dk)"/><rect x="250" y="322" width="14" height="70" fill="#5a3f24"/><rect x="528" y="322" width="14" height="70" fill="#5a3f24"/>
+<ellipse cx="450" cy="400" rx="80" ry="12" fill="#000" opacity=".5" filter="url(#bl)"/>
+<g filter="url(#sh)" transform="translate(405,120)"><path d="M-4 105Q46 78 96 105L104 190H-12Z" fill="url(#hood)"/><path d="M46 92V190" stroke="#0f4a40" stroke-width="3"/><path d="M26 92Q46 120 66 92" fill="#0f4a40" opacity=".6"/>
+<path d="M-2 112Q-24 160 18 182" stroke="url(#hood)" stroke-width="24" fill="none" stroke-linecap="round"/><circle cx="26" cy="184" r="11" fill="url(#sk)"/>
+<rect x="34" y="68" width="24" height="26" rx="8" fill="url(#sk)"/><ellipse cx="46" cy="48" rx="28" ry="32" fill="url(#sk)"/>
+<path d="M18 46Q16 8 48 8Q80 8 76 46Q70 24 48 24Q28 24 18 46Z" fill="#2b1d12"/><ellipse cx="37" cy="52" rx="3.2" ry="4.2" fill="#2b1d12"/><ellipse cx="57" cy="52" rx="3.2" ry="4.2" fill="#2b1d12"/>
+<path d="M38 64Q47 72 56 64" stroke="#9a4a3a" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="35" cy="52" r="9" fill="none" stroke="#1a1a1a" stroke-width="2"/><circle cx="59" cy="52" r="9" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+<path d="M16 46Q16 12 46 12Q76 12 78 46" stroke="#222c38" stroke-width="5" fill="none"/><rect x="8" y="42" width="14" height="22" rx="6" fill="#222c38"/><path d="M14 62Q22 74 36 72" stroke="#222c38" stroke-width="3" fill="none"/>
+<rect x="40" y="100" width="12" height="30" rx="3" fill="#ffcc33"/><rect x="36" y="128" width="20" height="26" rx="4" fill="#fffdf8"/><text x="46" y="145" text-anchor="middle" font-size="9" font-weight="700" fill="#1d2a3a" font-family="sans-serif">AZUBI</text></g>
+<g filter="url(#sh)"><g transform="translate(30,340) rotate(-4)"><rect width="150" height="64" rx="8" fill="#fffdf8"/><rect x="10" y="10" width="62" height="8" rx="4" fill="#2f5d8a"/><rect x="10" y="26" width="104" height="6" rx="3" fill="#aab"/><rect x="10" y="38" width="80" height="6" rx="3" fill="#aab"/><text x="140" y="56" text-anchor="end" font-size="15" font-weight="700" fill="#1f7a6b" font-family="sans-serif">+ € Gehalt</text></g>
+<circle cx="205" cy="372" r="26" fill="url(#coin)"/><circle cx="205" cy="372" r="20" fill="none" stroke="#9a6a00" stroke-width="2"/><text x="205" y="382" text-anchor="middle" font-size="26" font-weight="700" fill="#8a5a00" font-family="Georgia,serif">€</text></g></svg>
+ </div>
+</section>
+
+<section class="s s2">
+ <div class="txt">
+  <div class="num">02 / 03</div>
+  <h1>Studium</h1>
+  <p>Ein Studium macht man an einer Universität. Man lernt viele theoretische Dinge und beschäftigt sich intensiv mit einem Fach.</p>
+  <p>Ein Bachelorstudium dauert meistens drei bis vier Jahre. Während des Studiums kann man auch einen Nebenjob machen.</p>
+  <div class="chips"><span class="chip" style="color:var(--b)">🎓 Universität</span><span class="chip" style="color:var(--a)">📚 Theorie</span><span class="chip" style="color:var(--c)">⏳ 3–4 Jahre</span></div>
+ </div>
+ <div class="art">
+  <svg viewBox="0 0 560 420" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Student vor der Universität"><defs><filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".35"/></filter><filter id="bl"><feGaussianBlur stdDeviation="8"/></filter><linearGradient id="sk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6d3b0"/><stop offset="1" stop-color="#d9a273"/></linearGradient>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a90d9"/><stop offset="1" stop-color="#d8ecff"/></linearGradient>
+<linearGradient id="st" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e9dfcb"/><stop offset=".5" stop-color="#fbf4e4"/><stop offset="1" stop-color="#cfc3aa"/></linearGradient>
+<linearGradient id="rf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a4a3a"/><stop offset="1" stop-color="#5e2f25"/></linearGradient>
+<linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fae52"/><stop offset="1" stop-color="#2f7a33"/></linearGradient>
+<linearGradient id="hd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e1a31f"/><stop offset="1" stop-color="#a86a00"/></linearGradient></defs>
+<rect width="560" height="420" fill="url(#sky)"/><ellipse cx="110" cy="70" rx="60" ry="16" fill="#fff" opacity=".85"/><ellipse cx="150" cy="60" rx="40" ry="14" fill="#fff" opacity=".9"/><ellipse cx="450" cy="100" rx="55" ry="14" fill="#fff" opacity=".8"/>
+<rect y="330" width="560" height="90" fill="url(#gr)"/>
+<g filter="url(#sh)"><rect x="60" y="130" width="440" height="200" fill="url(#st)"/><polygon points="40,135 280,50 520,135" fill="url(#rf)"/><polygon points="90,128 280,66 470,128" fill="#fbf4e4"/><circle cx="280" cy="100" r="15" fill="#fff" stroke="#8a6a3a" stroke-width="3"/><path d="M280 90V100H288" stroke="#333" stroke-width="2.5" fill="none"/>
+<g fill="#fffaf0" stroke="#cbbd9f"><rect x="100" y="150" width="22" height="170"/><rect x="160" y="150" width="22" height="170"/><rect x="378" y="150" width="22" height="170"/><rect x="438" y="150" width="22" height="170"/></g>
+<g fill="#4c7aa8"><rect x="104" y="170" width="52" height="70" opacity="0"/></g>
+<g fill="#7fb2dc" stroke="#6b5a3a" stroke-width="3"><rect x="195" y="170" width="40" height="60"/><rect x="325" y="170" width="40" height="60"/></g><path d="M200 175l10 50M240 0" stroke="#fff" opacity=".5" stroke-width="5"/>
+<rect x="245" y="200" width="70" height="130" rx="30 30 0 0" fill="#4a2f1c"/><path d="M280 200V330" stroke="#2a180a" stroke-width="3"/>
+<path d="M40 330H520V342H40Z" fill="#d8ceb6"/><path d="M20 342H540V356H20Z" fill="#c4b99f"/></g>
+<g><rect x="20" y="230" width="14" height="110" fill="#6b4a2a"/><circle cx="27" cy="215" r="48" fill="#3f9a45"/><circle cx="8" cy="240" r="30" fill="#2f7a35"/><circle cx="52" cy="238" r="30" fill="#4fae55"/>
+<rect x="526" y="240" width="14" height="100" fill="#6b4a2a"/><circle cx="533" cy="225" r="44" fill="#3f9a45"/><circle cx="512" cy="250" r="28" fill="#2f7a35"/></g>
+<ellipse cx="400" cy="395" rx="90" ry="14" fill="#000" opacity=".4" filter="url(#bl)"/>
+<g filter="url(#sh)" transform="translate(340,150)">
+<path d="M26 170 L30 245 H56 L64 180 L78 245 H104 L104 170Z" fill="#2c3a55"/><rect x="24" y="242" width="40" height="14" rx="6" fill="#f2f2f2"/><rect x="72" y="242" width="40" height="14" rx="6" fill="#f2f2f2"/>
+<rect x="-12" y="55" width="40" height="80" rx="14" fill="#c0392b"/>
+<path d="M16 70 Q66 48 116 70 L124 180 H8Z" fill="url(#hd)"/><path d="M30 100 Q40 140 32 172M100 100Q92 140 102 172" stroke="#7a4a00" stroke-width="3" fill="none" opacity=".6"/><path d="M52 62 Q66 78 80 62" stroke="#fff" stroke-width="5" fill="none"/>
+<path d="M16 75 Q-2 110 24 140" stroke="url(#hd)" stroke-width="24" fill="none" stroke-linecap="round"/><g transform="translate(6,118) rotate(-12)"><rect width="52" height="38" rx="3" fill="#1f7a6b"/><rect x="4" y="3" width="44" height="32" fill="#fffdf8"/><path d="M26 3V35" stroke="#1f7a6b" stroke-width="2"/><path d="M9 12H22M9 19H22M30 12H43M30 19H43" stroke="#9ab" stroke-width="2"/></g><circle cx="22" cy="150" r="11" fill="url(#sk)"/>
+<path d="M116 75 Q134 110 122 150" stroke="url(#hd)" stroke-width="24" fill="none" stroke-linecap="round"/><circle cx="122" cy="154" r="11" fill="url(#sk)"/>
+<rect x="52" y="42" width="26" height="28" rx="8" fill="url(#sk)"/><ellipse cx="66" cy="26" rx="28" ry="32" fill="url(#sk)"/><path d="M38 24 Q40 -6 68 -4 Q94 -2 94 24 Q84 6 64 8 Q48 10 38 24Z" fill="#2b1d12"/>
+<ellipse cx="55" cy="30" rx="3.3" ry="4.2" fill="#2b1d12"/><ellipse cx="78" cy="30" rx="3.3" ry="4.2" fill="#2b1d12"/><path d="M54 44Q66 54 78 44" stroke="#9a4a3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g transform="translate(0,-26)"><polygon points="-8,10 66,-8 140,10 66,28" fill="#17202c"/><path d="M40 20V32Q66 42 92 32V20" fill="#0f1620"/><path d="M66 10 L130 14 V40" stroke="#ffcf4a" stroke-width="3" fill="none"/><circle cx="130" cy="44" r="6" fill="#ffcf4a"/></g></g></svg>
+ </div>
+</section>
+
+<section class="s s3">
+ <div class="txt">
+  <div class="num">03 / 03</div>
+  <h1>Unterschiede</h1>
+  <div class="cmp">
+   <div class="l"><b>Ausbildung</b>Man lernt praktisch und verdient Geld.<small>Firma + Berufsschule</small></div>
+   <div class="r"><b>Studium</b>Man bekommt einen Hochschulabschluss.<small>Universität · Theorie</small></div>
+  </div>
+  <p>Beide Wege haben Vorteile. Für IT-Berufe sind beide Möglichkeiten gut. Jeder sollte den Weg wählen, der am besten zu seinen Zielen passt.</p>
+ </div>
+ <div class="art">
+  <svg viewBox="0 0 560 420" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Zwei Wege zum IT-Beruf"><defs><filter id="sh" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity=".35"/></filter><filter id="bl"><feGaussianBlur stdDeviation="8"/></filter>
+<linearGradient id="sk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14304f"/><stop offset=".7" stop-color="#3f7fb8"/><stop offset="1" stop-color="#ffd48a"/></linearGradient>
+<linearGradient id="rd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4f57"/><stop offset="1" stop-color="#23262b"/></linearGradient>
+<linearGradient id="sc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22c3a6"/><stop offset="1" stop-color="#0f6f66"/></linearGradient>
+<radialGradient id="sun"><stop offset="0" stop-color="#fff3b0"/><stop offset="1" stop-color="#ffd48a" stop-opacity="0"/></radialGradient></defs>
+<rect width="560" height="420" fill="url(#sk3)"/><circle cx="280" cy="250" r="150" fill="url(#sun)"/>
+<path d="M0 255 L90 215 L170 250 L250 205 L330 245 L420 200 L560 255V270H0Z" fill="#2b4a6b" opacity=".75"/><rect y="262" width="560" height="160" fill="#2f6b3a"/><rect y="262" width="560" height="160" fill="url(#rd)" opacity="0"/>
+<polygon points="250,262 310,262 560,420 0,420" fill="url(#rd)"/><polygon points="275,262 285,262 330,420 230,420" fill="#2f6b3a" opacity="0"/>
+<path d="M280 262V420" stroke="#e8e8e8" stroke-width="5" stroke-dasharray="14 18"/>
+<path d="M255 262L60 420M305 262L500 420" stroke="#f1c40f" stroke-width="5" opacity=".9"/>
+<g filter="url(#sh)"><g transform="translate(90,320)"><rect x="-4" y="-80" width="8" height="80" fill="#6b4a2a"/><rect x="-52" y="-124" width="104" height="42" rx="8" fill="#e5a417"/><text y="-96" text-anchor="middle" font-size="19" font-weight="700" fill="#fff" font-family="sans-serif">AUSBILDUNG</text><text y="-92" x="0" opacity="0"/><path d="M-40 -88h80" stroke="#fff3c8" stroke-width="2"/></g>
+<g transform="translate(470,320)"><rect x="-4" y="-80" width="8" height="80" fill="#6b4a2a"/><rect x="-46" y="-124" width="92" height="42" rx="8" fill="#2f6aa8"/><text y="-96" text-anchor="middle" font-size="19" font-weight="700" fill="#fff" font-family="sans-serif">STUDIUM</text></g></g>
+<g filter="url(#sh)" transform="translate(180,30)"><rect width="200" height="140" rx="14" fill="#1b232d"/><rect x="10" y="10" width="180" height="104" rx="6" fill="url(#sc)"/>
+<g font-family="monospace" font-size="13" font-weight="700"><text x="20" y="34" fill="#fff">&lt;IT-Beruf&gt;</text><text x="30" y="54" fill="#ffe27a">Ausbildung();</text><text x="30" y="74" fill="#cfeaff">Studium();</text><text x="20" y="94" fill="#fff">&lt;/IT-Beruf&gt;</text></g>
+<path d="M10 10 L120 10 L60 114 L10 114Z" fill="#fff" opacity=".12"/>
+<rect x="85" y="140" width="30" height="22" fill="#10161d"/><rect x="55" y="160" width="90" height="12" rx="6" fill="#2a343f"/></g>
+<g font-size="26" opacity=".95"><text x="395" y="70">⭐</text><text x="130" y="90">⚙️</text></g></svg>
+ </div>
+</section>
+
+</div>
+
+<div class="nav">
+ <button id="prev" aria-label="Zurück">‹</button>
+ <div class="dots" id="dots"><i></i><i></i><i></i></div>
+ <button id="next" aria-label="Weiter">›</button>
+</div>
+
+<script>
+(function(){
+ var n=0,t=3,d=document.getElementById('deck'),dots=document.querySelectorAll('#dots i'),sl=document.querySelectorAll('.s'),bar=document.getElementById('bar');
+ function go(i){n=Math.max(0,Math.min(t-1,i));d.style.transform='translateX(-'+n*100+'%)';
+  for(var k=0;k<t;k++){dots[k].className=k===n?'on':'';sl[k].classList.toggle('on',k===n);}
+  bar.style.width=((n+1)/t*100)+'%';}
+ document.getElementById('prev').onclick=function(){go(n-1)};
+ document.getElementById('next').onclick=function(){go(n+1)};
+ for(var k=0;k<t;k++)(function(j){dots[j].onclick=function(){go(j)}})(k);
+ document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' ')go(n+1);if(e.key==='ArrowLeft')go(n-1)});
+ var x0=null;
+ document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+ document.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)go(n+(dx<0?1:-1));x0=null});
+ document.getElementById('fs').onclick=tf;
+ function tf(){var e=document.documentElement;if(document.fullscreenElement)document.exitFullscreen();else if(e.requestFullscreen)e.requestFullscreen();}
+ document.addEventListener('keydown',function(e){if(e.key==='f'||e.key==='F')tf()});
+ go(0);
+})();
+</script>
+</body>
+</html>
